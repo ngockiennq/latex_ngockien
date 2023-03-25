@@ -1,0 +1,420 @@
+\documentclass[12pt,twoside]{book}
+%\documentclass[12pt,twoside,a4paper]{book}
+%\usepackage{scrextend} %Tăng cỡ chữ
+%\changefontsizes{13pt}%Cỡ chữ mới là 13pt
+\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage{enumerate}
+\usepackage{multirow,makecell}
+\usepackage{fontawesome}
+\usepackage{tkz-euclide}
+%\usepackage{tikz-3dplot}
+\usepackage{diagbox}
+\usepackage{tkz-tab-vn}%,
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows,calc,intersections,angles,patterns,snakes,decorations.pathmorphing,backgrounds,positioning,fit,petri,shapes.symbols,matrix,tikzmark}
+%\usetkzobj{all}
+%\usepackage{casiokey}
+%\usepackage{ccfonts,eulervm}
+%\usepackage[math]{kurier}
+\usepackage[math]{anttor}
+\usepackage{pifont}
+\usepackage{maybemath}
+%\usepackage[paperwidth=17cm,paperheight=24cm, top=2cm, bottom=2cm, outer=1.5cm, inner=1.5cm, headsep=14pt]{geometry}
+\usepackage[top=1.3cm, bottom=1.3cm, outer=1.3cm, inner=1.3cm, headsep=14pt]{geometry}
+\usepackage[hidelinks,unicode]{hyperref}
+\usepackage{currfile}
+\usepackage{indentfirst}
+\usepackage[loigiai]{ex_test}
+%\usepackage{ex_test}
+%\usepackage[book]{ex_test}
+\usepackage{colorweb}
+\def\colorEX{\color{violet}}
+\renewcommand{\dapan}{\stepcounter{dapan}{\textbf{\color{blue}\Alph{dapan}.}}}
+\usepackage{esvect}
+\usepackage{lastpage}
+\def\vec{\vv}
+\def\overrightarrow{\vv}
+%Lệnh cung
+\DeclareSymbolFont{largesymbols}{OMX}{yhex}{m}{n}
+\DeclareMathAccent{\wideparen}{\mathord}{largesymbols}{"F3}
+%%=========Hệ hoặc, hệ và================%%
+\newcommand{\hoac}[1]{
+\left[\begin{aligned}#1\end{aligned}\right.}
+\newcommand{\heva}[1]{
+\left\{\begin{aligned}#1\end{aligned}\right.}
+\renewcommand{\baselinestretch}{1}
+\usepackage{framed}
+\usepackage[many]{tcolorbox}
+%\colorlet{tcbcol@back}{tcbcolback}
+%\colorlet{tcbcol@frame}{tcbcolframe}
+%%======================================%%
+\renewtheorem{ex}{Câu}
+\newtheorem{bt}{Bài}
+%%===============Định nghĩa ví dụ=======================%%
+\newtheorem{vd}{Ví dụ}
+\AtBeginEnvironment{vd}{
+\renewcommand{\loigiai}[1]{
+%%================Tùy chọn book====================%%
+%\begin{onlysolution}
+%\par\noindent\centerline{\textbf{Lời giải}}#1
+%\end{onlysolution}
+%%================Tùy chọn loigiai====================%%
+\begin{onlysolution}
+#1
+\end{onlysolution}
+%%====================================================%%
+}
+}
+\AtEndEnvironment{vd}{
+\ifshowanswers
+\fi
+\ifnum\the\value{numTrueSol}=1
+\selectA
+\fi
+\ifnum\the\value{numTrueSol}=2
+\selectB
+\fi
+\ifnum\the\value{numTrueSol}=3
+\selectC
+\fi
+\ifnum\the\value{numTrueSol}=4
+\selectD
+\fi
+\setcounter{numTrueSol}{0}
+%\hfill\qedEX\par
+}
+%%%===============Đánh số nội bộ=======================%%
+%\renewcommand{\baselinestretch}{1.2}
+%\newtheorem{theorem}{Theorem}[section]
+%\theoremstyle{definition}
+%%\theoremnumbering{arabic}
+%\newtheorem{dl}{Định lý}[section]
+%\newtheorem{bd}{Bổ đề}[section]
+%\newtheorem{md}{Mệnh đề}[section]
+%\newtheorem{hq}{Hệ quả}[section]
+%\newtheorem{dn}{Định nghĩa}[section]
+%\newtheorem{tc}{Tính chất}[section]
+%\newtheorem{qt}{Quy tắc}[section]
+%\theoremstyle{nonumberplain}
+%\newtheorem{nx}{Nhận xét}[section]
+%%\newtheorem{vd}{Ví dụ}[section]
+%%\newtheorem{bt}{Bài tập}[section]
+%\newtheorem{note}{Chú ý}[section]
+%\newtheorem{ghichu}{Ghi chú}[section]
+%%===============Đánh số đơn=======================%%
+%\renewcommand{\baselinestretch}{1.2}
+\theoremstyle{definition}
+\newtheorem{dl}{Định lý}
+\newtheorem{bd}{Bổ đề}
+\newtheorem{md}{Mệnh đề}
+\newtheorem{hq}{Hệ quả}
+\newtheorem{dn}{Định nghĩa}
+\newtheorem{tc}{Tính chất}
+\newtheorem{qt}{Quy tắc}
+\theoremstyle{nonumberplain}
+\newtheorem{nx}{Nhận xét}[section]
+\newtheorem{note}{Chú ý}[section]
+\newtheorem{ghichu}{Ghi chú}[section]
+%\everymath{\displaystyle}
+%%===============Dạng===================%%
+\newcounter{dang}[section]
+\newcommand{\dang}[1]{%
+\setcounter{vd}{0}
+\setcounter{bt}{0}
+\setcounter{ex}{0}
+%\addcontentsline{toc}{subsection}{#1~\thede} % đưa MT vào mục lục
+\stepcounter{dang}
+{\bf\fontfamily{qag}\selectfont\color{black}\large Dạng~\thedang.~#1}
+\newline
+}
+%%===============Cấp hiện mục lục==================%%
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{1}%cấp hiện mục lục
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{textcomp}
+%%===============Mục lục==================%%
+\usepackage{commath}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{afterpage}
+\usepackage{wrapfig}
+\newif\ifintoc
+
+\newcommand*{\PrintChapterTocHeadline}
+{\hbox to \linewidth{\hfill\textbf{Trang}}\bigskip
+\SetupNextPage}
+
+\newcommand*{\SetupNextPage}
+{\afterpage {\ifintoc\PrintChapterTocHeadline\fi}}
+
+\addtocontents{toc}{\protect\PrintChapterTocHeadline}
+\pagestyle{fancy}
+\fancyhf{}
+\chead{}
+\rhead{}
+\lhead{}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+%%=============Hiển thị Section==============%%
+\makeatletter
+\renewcommand*\l@section[2]{%
+\ifnum \c@tocdepth >\m@ne
+\addpenalty{-\@highpenalty}%
+\vskip 0.5em \@plus\p@ %dãn dòng các section
+\setlength\@tempdima{1.5em}%
+\begingroup
+\parindent \z@ \rightskip \@pnumwidth
+\parfillskip -\@pnumwidth
+\leavevmode
+\advance\leftskip\@tempdima
+\hskip -\leftskip
+%%============Tùy chỉnh tên và trang trí===========%%
+\hspace*{1cm}\color{black}\fontfamily{qag}\selectfont Chủ đề #1
+\nobreak\color{black}\dotfill\hb@xt@\@pnumwidth{\hss #2}\hspace*{1ex}
+\par\smallskip
+\penalty\@highpenalty
+\endgroup
+\fi}
+%%=================Hết mục lục==============%%
+%%================Part====================%%
+\titleformat{\part}[display]
+{\Large\bfseries\color{black}}{
+\centering
+\begin{tikzpicture}
+\fill[black] (-1,-1) rectangle (1,1);
+\draw(0,1.5)node{\fontfamily{ccr}\selectfont\Large PHẦN};
+\draw(0,0)node{\color{white}\fontsize{60pt}{1pt}\selectfont\thepart};
+\end{tikzpicture}
+}
+{0.5em}
+{\titlerule[2.5pt]\vskip3pt\titlerule\vskip4pt\centering\fontsize{60pt}{1pt}\fontfamily{antt}\selectfont\MakeUppercase}
+%%====================Section=========================%%
+\def\thesection{\arabic{section}}
+\titleformat{\section}{\fontfamily{qag}\selectfont\centering\Large\bfseries}{Chủ đề \thesection.}{-0.5cm}{
+\setcounter{vd}{0}
+\setcounter{ex}{0}
+\setcounter{bt}{0}
+\MakeUppercase
+%\setcounter{\tcbcounter}{0}\fontsize{18pt}{1pt}\fontfamily{qag}\selectfont\color{blue}
+}%\MakeUppercase
+%%====================Subsection=========================%%
+\def\thesubsection{\Alph{subsection}}
+\titleformat{\subsection}
+{\fontfamily{qag}\selectfont\large\bfseries}
+{\hspace*{-0.3cm}
+\tikz[baseline=(char.base)]\node[shape=circle,line width=0.8pt,draw,inner sep=1.7pt, fill=white] (char){\textcolor{black}{\thesubsection}};
+}
+{-0.2cm}
+{
+\setcounter{ex}{0}\setcounter{vd}{0}\setcounter{bt}{0}
+\MakeUppercase
+}
+%%====================Subsubsection=========================%%
+\def\thesubsubsection{\arabic{subsubsection}}
+\titleformat{\subsubsection}
+{\fontfamily{qag}\selectfont\large\bfseries}
+{\hspace*{-0.2cm}
+\tikz[baseline=(char.base)]
+\node[] (char) {\textcolor{black}{\thesubsubsection.}};
+}
+{-0.5cm}
+{
+\setcounter{ex}{0}
+\setcounter{bt}{0}
+\setcounter{vd}{0}
+%\MakeUppercase
+}
+%%====================Paragraph=========================%%
+%\def\theparagraph{\alph{paragraph}}
+\titleformat{\paragraph}{\bfseries\fontfamily{qag}\selectfont}{\theparagraph.\ }{0em}{\fontfamily{qag}\selectfont\color{black}
+}
+%%====================Làm đẹp vector=========================%%
+\usepackage{esvect}
+\def\vec{\vv}
+\def\overrightarrow{\vv}
+%%====================Lời giải=========================%%
+\renewcommand{\loigiaiEX}{
+\begin{center}
+\fontfamily{antt}\selectfont\color{black}Lời giải
+\end{center}
+}
+%%===============Mã QR====================%%
+\usepackage[hidelinks]{hyperref}
+\usepackage{qrcode}
+\def\maQR#1#2{
+\tikz\path
+node[above,draw=green,line width=2pt,sharp corners]{\qrcode[height=1in]{#2}}
+node[below,rounded corners=1mm]{\href{#2}{#1}}
+;
+}
+%%===============Các môi trường====================%%
+\newcommand{\BTVD}{\centerline{\textbf{\fontfamily{qag}\selectfont BÀI TẬP VẬN DỤNG}}\setcounter{ex}{0}\setcounter{bt}{0}\setcounter{vd}{0}}	
+\newcommand{\VDMH}{\centerline{\textbf{\fontfamily{qag}\selectfont VÍ DỤ MINH HỌA}}\setcounter{ex}{0}\setcounter{bt}{0}\setcounter{vd}{0}}
+\newcommand{\BTTN}{\centerline{\textbf{\fontfamily{qag}\selectfont BÀI TẬP TRẮC NGHIỆM}}\setcounter{ex}{0}\setcounter{bt}{0}\setcounter{vd}{0}}
+\newcommand{\DA}{\centerline{\textbf{\fontfamily{qag}\selectfont ĐÁP ÁN}}}
+\newcommand{\HDG}{\centerline{\textbf{\fontfamily{qag}\selectfont HƯỚNG DẪN GIẢI MỘT SỐ CÂU}}}
+%%===============Chọn đáp án====================%%
+\def\selectA{\color{black}\par\noindent Chọn đáp án \circled{A}}%\dotfill}\faLongArrowRight\ 
+\def\selectB{\color{black}\par\noindent Chọn đáp án \circled{B}}%\dotfill}\faKey\,
+\def\selectC{\color{black}\par\noindent Chọn đáp án \circled{C}}%\dotfill}
+\def\selectD{\color{black}\par\noindent Chọn đáp án \circled{D}}%\dotfill}
+\def\selectE{\color{black}\par\noindent Chọn đáp án \circled{E}}%\dotfill}
+%\def\qedEX{}
+%%======chỉnh dãn dòng môi trường đô la======%%
+\makeatletter
+\g@addto@macro \normalsize {%
+\setlength\abovedisplayskip{2pt plus 2pt minus 2pt}%
+\setlength\belowdisplayskip{2pt plus 2pt minus 2pt}%
+}
+\makeatother
+%%======Chỉnh dãn dòng môi trường center======%%
+\let\oldcenter\center
+\let\oldendcenter\endcenter
+\renewenvironment{center}{\setlength\topsep{.4pt}\oldcenter}{\oldendcenter}
+%\usepackage[Glenn]{fncychap}
+%Header-footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyfoot[C]{} %Page Number
+\renewcommand{\headrulewidth}{1.5pt} %0pt for no rule, 2pt thicker etc...
+\renewcommand{\footrulewidth}{1.5pt}
+\fancyhf{}
+\fancyhead[RO,LE]{\bf \color{blue} \faFacebookSquare\, Toán Thầy Kiên Ngô Quyền}
+\fancyfoot[RE,LO]{\textcolor{blue}{$ \star $ \fontfamily{cmss}\selectfont Thầy \textbf{NGUYỄN NGỌC KIÊN - {\faPhoneSquare} 0987 473 509} $ \star $}}
+\fancyfoot[LE,RO]{\fontfamily{cmss}\selectfont \textcolor{blue}{Page \circled{\thepage}}}
+%------------
+%------------Chỉnh đánh số cho ListEX
+\renewcommand{\labelenumi}{ \bfseries\selectfont\alph{enumi}.}
+\newcounter{CircLabel}
+\newcommand*\CircLabel{%
+\refstepcounter{CircLabel}%
+\hskip1em\llap{{\bfseries\selectfont\alph{CircLabel}.}}}%
+\NewEnviron{circ_enum}[1][]{%
+\hfill
+\setcounter{CircLabel}{0}
+\def\tempbegin{\begin{taskEX}[label=\CircLabel](#1)}%
+\expandafter\tempbegin\BODY
+\end{taskEX}
+}
+
+\setlistsEX{label=\CircLabel}
+
+\AtBeginEnvironment{listEX}{\setcounter{CircLabel}{0}}
+\AtBeginEnvironment{enumEX}{\setcounter{CircLabel}{0}}
+%-----Bỏ trang trắng trước chapter và part
+%\makeatletter\@openrightfalse 
+%---------------
+\begin{document}
+\centerline{\textbf{ĐỀ ÔN SỐ 1 - THPT NGÔ QUYỀN 2022 - 2023}}
+\begin{ex}[0.75đ]
+Xác định tính đúng sai và tìm phủ định của mệnh đề: $A: `` \forall x \in R: x^2+2 x+3 \neq 0''$ 
+\end{ex}
+
+\begin{ex}[0.75đ]
+Viết tập hợp sau bằng cách liệt kê các phần tử của nó: $B=\{x \in \mathbb{Z} \mid -1 \leq x<2\}$
+\end{ex}
+
+\begin{ex}[0.5đ]
+Xác định các tập hợp sau: 
+\begin{listEX}[2]
+\item $(-\infty ; 2] \cap(0 ; 5)$
+\item $[-2 ; 2] \backslash(0 ; 8)$
+\end{listEX} 
+\end{ex}
+
+\begin{ex}[1.5điểm]
+Tìm tập xác định của các hàm số sau:
+\begin{listEX}[2]
+\item $y=\sqrt{x-2}$
+\item $y=\sqrt{3-2 x}+\dfrac{1}{x^2-3 x}$
+\end{listEX}
+\end{ex}
+
+\begin{ex}[0.5đ]
+Cho tam giác $ABC$ có $A B=c=4, B C=a=5, A C=b=7$. Tính $\cos \widehat{A B C}$
+\end{ex} 
+
+\begin{ex}[2.5đ]
+Cho hình chữ nhật $A B C D$ tâm $O, M$ là trung điểm $A B ; A D=2 a, A B=a$.
+\begin{listEX}[2]
+\item Tìm 2 vectơ (khác $\vec{O}$ ) cùng phương với $\overrightarrow{D C}$
+\item Tìm 2 vectơ (khác $\vec{O}$ ) ngược hướng với $\overrightarrow{A M}$
+\item Chứng minh rằng: $\overrightarrow{A B}-\overrightarrow{C D}=\overrightarrow{A C}+\overrightarrow{D B}$
+\item Tính độ dài các vectơ $\overrightarrow{A B}+\overrightarrow{A D} $; $\overrightarrow{O A}-\overrightarrow{C B}$
+\end{listEX}
+\end{ex} 
+
+\begin{ex}[1đ]
+Biểu diễn miền nghiệm của bất phương trình $x+2 y-6 \leq 0$
+\end{ex}
+
+\begin{ex}[1đ]
+\immini[thm]{
+Giả sử $AB=h$ là chiều cao của tháp trong đó $A$ là chân tháp. Chọn hai điềm $C, D$ trên mặt đất sao cho ba điểm $A, C, D$ thẳng hàng. Ta đo được $CD=24 m, \widehat{ACB}=63^{\circ}, \widehat{ADB}=48^{\circ}$. Tính chiều cao $h$ của tháp (kết quả làm tròn đến hàng đơn vị).
+}
+{
+\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+\path
+(0,0) coordinate (A)
+(0,5) coordinate (B)
+(4.5,0) coordinate (C)		
+(6.5,0) coordinate (D)	
+;
+\path ($(A)!.5!(B)$) node	{\begin{tikzpicture}[scale=1.32]
+\draw plot coordinates{(0,0)(-.5,0) (-0.31,0.39) (-0.2,0.39) (-0.2,2.52)(-0.31,2.52) (-0.31,2.76) (-0.22,2.76)(-0.11,3.12)(0,3.8)};
+\fill[violet] plot coordinates{(0,0)(.5,0) (0.31,0.39) (0.2,0.39) (0.2,2.52)(0.31,2.52) (0.31,2.76) (0.22,2.76)(0.11,3.12)(0,3.8)};
+\end{tikzpicture}
+}; 
+\draw (D)--(A)--(B)--(C) (B)--(D);
+\draw
+pic[draw,angle radius=.4cm]{right angle=D--A--B};
+\tkzLabelAngles[pos=0.8](B,D,A){$48^\circ$}
+\tkzLabelAngles[pos=0.8](B,C,A){$63^\circ$}
+\foreach \x/\g in{A/-90,B/120,C/-90,D/-60} \draw[fill=black] (\x) circle (.05)+(\g:.4) node {$\x$};
+\path 
+($(D)!.5!(C)$) node[below]{$24\text{m}$};
+\end{tikzpicture}
+}
+\end{ex} 
+
+\begin{ex}[1đ]
+Cho tam giác $A B C$ có $\sin C=2 \sin B \cdot \cos A$. Chứng minh rằng $\triangle A B C$ cân.
+\end{ex}
+
+\begin{ex}[0.5đ]
+Cho $A=[-4 ; 5], B=[m-2 ; m+1]$. Tìm $m$ đề $A \cup B$ là một đoạn.
+\end{ex}
+
+\centerline{\textbf{ĐỀ ÔN SỐ 2}}
+\setcounter{ex}{0}
+\begin{ex}
+Xét tính đúng sai (có giải thích) và phát biểu mệnh đề phủ định và xét tính đúng sai của các mệnh đề sau:
+\begin{listEX}
+\item  A: ``Phương trình $x^2+4 x-5=0$ vô nghiệm."
+\item B: `` $\exists n \in \mathbb{N}, n^2-5$ là bội của 5 ."
+\end{listEX}
+
+\end{ex} 
+\begin{ex}
+cho tập hợp $A = \left[2;+\infty \right)$ và $B = \{x \in \mathbb{R} : -1 \ge x \ge 6\}$. Tính $A \subset B, A \cup B, A \backslash B$ và biểu diễn các tập hợp trên trục số.
+\end{ex}
+
+\begin{ex}
+Cho hình bình hành ${ABCD}$.
+\begin{listEX}
+\item Chứng minh $\overrightarrow{CA}+\overrightarrow{CB}+\overrightarrow{CD}=2 \overrightarrow{CA}$;
+\item Lấy điểm ${H}$ sao cho $\overrightarrow{AC}=3 \overrightarrow{A H}$. Chứng minh $\overrightarrow{BH}=\dfrac{2}{3} \overrightarrow{BA}+\dfrac{1}{3} \overrightarrow{BC}$;
+\item Gọi ${M}$ là trung điểm của đoạn thẳng ${BC}, {K}$ là trung điểm của đoạn thẳng ${AM}$. Chứng minh ba điểm ${B}, {K}, {H}$ thẳng hàng.
+\end{listEX}
+\end{ex}
+
+
+\begin{ex}
+Mỗi học sinh của lóp $10T2$ đều biết chơi cầu lông hoặc bóng rổ, biết rằng có 34 em biết chơi ít nhất một trong hai môn, 26 em biết chơi cầu lông, 25 em biết chơi bóng rổ. Hỏi có bao nhiêu em học sinh lớp $10T2$ biết chơi cả hai môn?
+\end{ex}
+
+\begin{ex}
+Cho hai tập hợp $C=(1 ; 3)$ và $D=[m ; m+4]$. Tìm $m$ để $C \cap D=C$
+\end{ex} 
+\end{document}
